@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f0e2ff" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0e2ff"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/title_hiscore"
+            android:textSize="24sp"
+            android:textColor="#6a4098"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_hiscore"
+                android:textColor="#8a62b7" />
+
+            <TextView
+                android:id="@+id/hiscore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#8a62b7" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_reset_hiscore"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/button_reset_hiscore" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/title_icons"
+            android:textSize="24sp"
+            android:textColor="#6a4098"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <RadioButton
+                android:id="@+id/radio_mode_fruits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_mode_fruits"
+                android:textColor="#8a62b7" />
+
+            <RadioButton
+                android:id="@+id/radio_mode_halloween"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_mode_halloween"
+                android:textColor="#8a62b7" />
+            
+            <RadioButton
+                android:id="@+id/radio_mode_sports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_mode_sports"
+                android:textColor="#8a62b7" />
+            
+            <RadioButton
+                android:id="@+id/radio_mode_foods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_mode_foods"
+                android:textColor="#8a62b7" />
+        </RadioGroup>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffa891c2"
+            android:padding="5dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/message_effect_new_game"
+            android:textSize="14sp"
+            android:textColor="#e6daf3"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/title_sound"
+            android:textSize="24sp"
+            android:textColor="#6a4098"
+            android:textStyle="bold" />
+
+        <ToggleButton
+            android:id="@+id/checkbox_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/checkbox_sound" />
+                
+        
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fullwrapper"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#5a4872" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:background="#5a4872" >
+      
+         <LinearLayout
+        	android:id="@+id/splash"
+        	android:layout_width="fill_parent"
+        	android:layout_height="fill_parent"
+        	android:background="@drawable/splashscreen"
+        	android:gravity="center_horizontal|center_vertical"
+        	android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/button_play"
+                android:background="@drawable/btn_gameplay"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:text="@string/button_play"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="25.0sp" />
+
+            <ImageView
+                android:id="@+id/image_splash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/appname"
+                android:gravity="center_horizontal" />
+            
+		 </LinearLayout>
+
+    <view
+        android:id="@+id/gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        class="memory.game.kids.memory.ui.MemoryGridView"
+        android:gravity="center"
+        android:horizontalSpacing="8dp"
+        android:layoutAnimation="@anim/layout_random_fade"
+        android:numColumns="4"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="8dp"
+        android:visibility="gone" />
+
+</LinearLayout>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:gravity="center" >
+
+<com.google.ads.AdView android:id="@+id/adView"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         ads:adUnitId="MY_AD_UNIT_ID"
+                         ads:adSize="BANNER"
+                         ads:testDevices="TEST_EMULATOR, TEST_DEVICE_ID"
+                         ads:loadAdOnCreate="true"
+                        />
+</LinearLayout>
+</LinearLayout>

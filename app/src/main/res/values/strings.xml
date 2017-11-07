@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Kids Memory Game"</string>
+    <string name="activity_title">"Kids Memory Game"</string>
+    <string name="success_title">"Well Done!"</string>
+    <string name="success">Your score is {0} moves.\n\nThe high score is {1} moves.</string>
+    <string name="hiscore_title">"New High Score!</string>
+    <string name="hiscore">You\'\'ve set the new high score to {0} moves. \n\nThe old high score was {1} moves.</string>
+    <string name="new_game">"New game"</string>
+    <string name="quit">"Quit"</string>
+    <string name="button_play">"Play"</string>
+    <string name="version">"Version 1.0"</string>
+    <string name="ok">Okay</string>
+    <!-- What's new dialog -->
+    <string name="first_run_dialog_title">Welcome to Kids Memory Game</string>
+    <string name="first_run_dialog_message">Thanks for downloading Kids Memory Game\n\n
+    Quick Instructions :\n
+    \t• Touch-open titles and find pairs.\n
+    \n\n Nothing more.. Enjoy!\n
+    </string>
+    <string name="whats_new_dialog_title">What\'s new in Kids Memory Game</string>
+    <string name="whats_new_dialog_message">Thanks for trying Kids Memory Game\n
+    <b>New in version 1.0:</b>\n
+    \t• HD fruit icons.\n
+    \t• Four game modes.\n
+    \n\nHave fun and don\'t forget to give rating. We need your support.
+    </string>
+    <string name="credits_menu">About</string>
+    <string name="credits_app_name">Kids Memory Game</string>
+    <string name="credits_current_version">Version 1.0</string>
+
+    <string name="menu_preferences">Settings</string>
+    <string name="title_hiscore">HighScore</string>
+    <string name="label_hiscore">Current HighScore : </string>
+    <string name="button_reset_hiscore">Reset HighScore</string>
+    <string name="title_icons">Game Mode</string>
+    <string name="radio_mode_fruits">Fruits</string>
+    <string name="radio_mode_halloween">Halloween</string>
+    <string name="radio_mode_sports">Sports</string>
+    <string name="radio_mode_foods">Foods</string>
+    <string name="message_effect_new_game">Changes will take effect on a new game.</string>
+    <string name="title_sound">Sounds</string>
+    <string name="checkbox_sound">Enable sound</string>
+</resources>
