@@ -16,7 +16,7 @@ public class TileList extends ArrayList<Tile>
     /**
      * Constructor
      */
-    TileList()
+    public TileList()
     {
     }
 
@@ -24,7 +24,7 @@ public class TileList extends ArrayList<Tile>
      * Constructeur
      * @param serialized A serialized list
      */
-    TileList(String serialized)
+    public TileList(String serialized)
     {
         try
         {
@@ -46,7 +46,7 @@ public class TileList extends ArrayList<Tile>
      * Serialize the List
      * @return The list as a String
      */
-    String serialize()
+    public String serialize()
     {
         JSONArray array = new JSONArray();
         for (Tile t : this)
@@ -56,7 +56,7 @@ public class TileList extends ArrayList<Tile>
         return array.toString();
     }
 
-    ArrayList<Tile> getSelected()
+    public ArrayList<Tile> getSelected()
     {
         ArrayList<Tile> list = new ArrayList<Tile>();
         for (Tile t : this)

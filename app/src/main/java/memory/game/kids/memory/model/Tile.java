@@ -14,7 +14,7 @@ public class Tile
     private static final String ATTR_RESID = "ResId";
     boolean mFound;
     boolean mSelected;
-    int mResId;
+    public int mResId;
     private static int mNotFoundResId;
 
     /**
@@ -27,7 +27,7 @@ public class Tile
     /**
      * Constructor
      */
-    Tile(int nResId)
+    public Tile(int nResId)
     {
         mResId = nResId;
     }
@@ -58,7 +58,7 @@ public class Tile
         return mFound;
     }
 
-    void setFound(boolean bFound)
+    public void setFound(boolean bFound)
     {
         mFound = bFound;
     }

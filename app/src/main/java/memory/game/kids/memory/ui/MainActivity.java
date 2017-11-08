@@ -1,14 +1,20 @@
 package memory.game.kids.memory.ui;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Random;
 
-import memory.game.kids.memory.PreferencesService;
+import  memory.game.kids.memory.PreferencesService;
 import memory.game.kids.memory.R;
-import memory.game.kids.memory.game.ShowImages;
+import memory.game.kids.memory.game.MemoryGridViewD;
+import memory.game.kids.memory.game.Memory_two;
 import memory.game.kids.memory.model.Memory;
 
 /**
@@ -16,7 +22,6 @@ import memory.game.kids.memory.model.Memory;
  */
 public class MainActivity extends AbstractMainActivity implements Memory.OnMemoryListener
 {
-    Intent intent ;
 
     private static final int[] tiles_fruits =
     {
@@ -65,20 +70,39 @@ public class MainActivity extends AbstractMainActivity implements Memory.OnMemor
     {
         R.drawable.not_found_fruits, R.drawable.not_found_halloween, R.drawable.not_found_sports, R.drawable.not_found_foods
     };
-    private Memory mMemory;
-//    private int mNotFoundResId;
-    private MemoryGridView mGridView;
 
-    /**
-     * {@inheritDoc }
-     */
+    int [] arraImagRtage ={0, 1, 2, 3, 4, 5, 6,7 ,8,9,
+                           10, 11, 12, 13, 14, 15, 16,17 ,18,19 ,
+                           20, 21, 22, 23, 24, 25, 26,27 ,28,29 ,
+                           30, 31, 32, 33, 34, 35, 36,37 ,38,39 ,
+                           40, 41, 42, 43, 44, 45, 46,47 ,48,49
+    };
+    int range = arraImagRtage.length;
+    int rangee;
+    int myImgCount = 0;
+    ArrayList<Integer> numberArray =new ArrayList<>();
+    Random random = new Random();
+     private Memory memory ;
+     private  Memory_two memory_two ;
+     private MemoryGridView mGridView;
+    MemoryGridViewD memoryGridViewDialoge ;
+    Dialog okdialog ;
+
     @Override
     public void onCreate(Bundle icicle)
     {
         super.onCreate(icicle);
+        int set = PreferencesService.instance().getIconsSet();
+        rangee =icons_set[ set ].length;
+         memory= new Memory( icons_set[ set ], sounds , not_found_tile_set[ set], this );
+        memory.reset();
+        memory_two= new Memory_two( icons_set[ set ], sounds , not_found_tile_set[ set ], this  );
+        memory_two.reset();
+          PreferencesService.init( this );
 
-        PreferencesService.init( this );
-        newGame();
+
+
+         newGame();
 
     }
 
@@ -97,11 +121,8 @@ public class MainActivity extends AbstractMainActivity implements Memory.OnMemor
     @Override
     protected void newGame()
     {
-        int set = PreferencesService.instance().getIconsSet(); 
-        mMemory = new Memory( icons_set[ set ], sounds , not_found_tile_set[ set ], this);
-        mMemory.reset();
-        mGridView = (MemoryGridView) findViewById(R.id.gridview);
-        mGridView.setMemory(mMemory);
+         mGridView = (MemoryGridView) findViewById(R.id.gridview);
+         mGridView.setMemory(memory);
         drawGrid();
     }
 
@@ -116,18 +137,55 @@ public class MainActivity extends AbstractMainActivity implements Memory.OnMemor
         startActivity(intent);
     }
 
-    /**
-     * {@inheritDoc }
-     */
+    @Override
+    protected void dialoge() {
+
+
+        okdialog = new Dialog(this, R.style.custom_dialog_theme);
+        okdialog.setContentView(R.layout.activity_show_images);
+        memoryGridViewDialoge =(MemoryGridViewD)okdialog.findViewById(R.id.gridview_Dialode);
+        memoryGridViewDialoge.setMemory(memory_two);
+        okdialog.show();
+
+//                 new Handler().postDelayed(new Runnable() {
+//                      @Override
+//                     public void run() {
+//                          okdialog.dismiss();
+//                          okdialog.cancel();
+//                }
+//                }, 9000);
+////
+//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+//                     LayoutInflater inflater = this.getLayoutInflater();
+//      View dialogView = inflater.inflate(R.layout.activity_show_images, null);
+//           dialogBuilder.setView(dialogView);
+//             alertDialog = dialogBuilder.create();
+//
+//               alertDialog.show();
+//                new Handler().postDelayed(new Runnable() {
+//                      @Override
+//                     public void run() {
+//                          alertDialog.cancel();
+//                }
+//                }, 9000);
+
+
+    }
+
+
+
+
+
+
     @Override
     protected void onResume()
     {
         super.onResume();
 
-        mMemory.onResume( PreferencesService.instance().getPrefs() );
+        memory.onResume( PreferencesService.instance().getPrefs() );
 
         drawGrid();
-        
+
     }
 
     /**
@@ -138,7 +196,7 @@ public class MainActivity extends AbstractMainActivity implements Memory.OnMemor
     {
         super.onPause();
 
-        mMemory.onPause( PreferencesService.instance().getPrefs() , mQuit);
+        memory.onPause( PreferencesService.instance().getPrefs() , mQuit);
 
     }
 
@@ -161,11 +219,7 @@ public class MainActivity extends AbstractMainActivity implements Memory.OnMemor
 
             PreferencesService.instance().saveHiScore(countMove);
         }
-        ShowImages showImages = new ShowImages();
-        showImages.getdata(mMemory);
-
-        intent = new Intent(this, ShowImages.class);
-        this.showEndDialog(title, message, icon ,intent);
+        this.showEndDialog(title, message, icon);
     }
 
     /**
@@ -173,6 +227,7 @@ public class MainActivity extends AbstractMainActivity implements Memory.OnMemor
      */
     public void onUpdateView()
     {
+
         drawGrid();
     }
 
@@ -182,6 +237,7 @@ public class MainActivity extends AbstractMainActivity implements Memory.OnMemor
     private void drawGrid()
     {
         mGridView.update();
-    }
+     }
 
-}
+
+ }

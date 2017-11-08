@@ -16,23 +16,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:theme="@style/AppTheme"
             android:name=".ui.MainActivity"
             android:label="@string/activity_title"
             android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".ui.PreferencesActivity"
+            android:label="@string/activity_title"
+            android:screenOrientation="portrait" >
+
+        </activity>
+        <activity
+
+            android:name="com.google.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity android:name=".game.ShowImages" />
+        <activity android:name=".game.ChoesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.PreferencesActivity"
-            android:label="@string/activity_title"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="com.google.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
-        <activity android:name=".game.ShowImages"></activity>
     </application>
 
 </manifest>

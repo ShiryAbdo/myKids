@@ -1,4 +1,4 @@
-package memory.game.kids.memory.ui;
+package memory.game.kids.memory.game;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,17 +6,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import memory.game.kids.memory.model.Memory;
+import memory.game.kids.memory.game.ImageAdapter;
+import memory.game.kids.memory.game.Memory_two;
 
-public class MemoryGridView extends GridView
+
+public class MemoryGridViewD extends GridView
 {
     private static final int MARGINH = 15;
     private static final int MARGINM = 2;
 
-    private Memory mMemory;
+    private Memory_two mMemory;
     private Context mContext;
 
-    public MemoryGridView(Context context)
+    public MemoryGridViewD(Context context)
     {
         super(context);
 
@@ -33,7 +35,7 @@ public class MemoryGridView extends GridView
 
     }
 
-    public MemoryGridView (Context context, AttributeSet attrs)
+    public MemoryGridViewD(Context context, AttributeSet attrs)
     {
         super( context , attrs );
         mContext = context;
@@ -47,7 +49,7 @@ public class MemoryGridView extends GridView
         });
     }
 
-    public MemoryGridView (Context context, AttributeSet attrs, int defStyle)
+    public MemoryGridViewD(Context context, AttributeSet attrs, int defStyle)
     {
         super( context , attrs , defStyle );
         mContext = context;
@@ -69,7 +71,7 @@ public class MemoryGridView extends GridView
         update( );
     }
 
-    void update()
+    public void update()
     {
     	if (getWidth()<480) {
     		setAdapter(new ImageAdapter( mContext, getWidth(), getHeight(), MARGINM , mMemory));
@@ -80,7 +82,7 @@ public class MemoryGridView extends GridView
     }
 
 
-    public void setMemory( Memory memory )
+    public void setMemory( Memory_two memory )
     {
         mMemory = memory;
     }

@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="memory.game.kids.memory.game.ShowImages">
-
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="50dp"
+    android:background="#7c636665"
+    android:layout_height="match_parent">
 
     <view
-        android:background="#000"
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="memory.game.kids.memory.ui.MemoryGridView"
+        android:id="@+id/gridview_Dialode"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        class="memory.game.kids.memory.game.MemoryGridViewD"
         android:gravity="center"
         android:horizontalSpacing="8dp"
         android:layoutAnimation="@anim/layout_random_fade"
         android:numColumns="4"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="8dp"
-        android:visibility="gone" />
+        android:verticalSpacing="8dp" />
 
 </LinearLayout>

@@ -3,7 +3,6 @@ package memory.game.kids.memory.ui;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.media.AudioManager;
@@ -18,6 +17,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.androidsoft.utils.sound.SoundManager;
 
@@ -25,6 +25,7 @@ import memory.game.kids.memory.Constants;
 import memory.game.kids.memory.PreferencesService;
 import memory.game.kids.memory.R;
 import memory.game.kids.memory.Rotate3dAnimation;
+import memory.game.kids.memory.game.MemoryGridViewD;
 
 /**
  * AbstractMainActivity
@@ -51,6 +52,8 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
     protected abstract void newGame();
 
     protected abstract void preferences();
+    protected abstract   void dialoge ();
+     MemoryGridViewD gridview ;
     
     /**
      * {@inheritDoc }
@@ -65,10 +68,8 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
         setContentView(R.layout.main);
         mContainer = (ViewGroup) findViewById(R.id.container);
         mSplash = (View) findViewById(R.id.splash);
-
         mButtonPlay = (Button) findViewById(R.id.button_play);
         mButtonPlay.setOnClickListener(this);
-
         checkLastVersion();
     }
 
@@ -78,6 +79,9 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
     @Override
     protected void onResume()
     {
+        Toast.makeText(getApplicationContext(),"hhhhhhhh",Toast.LENGTH_LONG).show();
+
+
         super.onResume();
 
         SharedPreferences prefs = getPreferences(0);
@@ -97,6 +101,10 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
             SoundManager.init(this);
         }
         SoundManager.instance().addSound(SOUND_NEW_GAME, R.raw.start_game);
+
+
+
+
     }
 
     /**
@@ -182,7 +190,7 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
         }
     }
 
-    protected void showEndDialog(String title, String message, int icon , final Intent intent)
+    protected void showEndDialog(String title, String message, int icon)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
@@ -196,8 +204,7 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
                     public void onClick(DialogInterface dialog, int id)
                     {
                         dialog.cancel();
-                        startActivity(intent);
- //                        onNewGame();
+                        onNewGame();
                     }
                 });
         builder.setNegativeButton(getString(R.string.quit),
@@ -213,6 +220,8 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
         alert.show();
 
     }
+
+
 
     // 3D anim from Splash Screen to Game screen
     /**
@@ -254,6 +263,7 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
         }
 
         public void onAnimationStart(Animation animation)
+
         {
             if( PreferencesService.instance().isSoundEnabled() )
             {
@@ -263,6 +273,8 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
 
         public void onAnimationEnd(Animation animation)
         {
+
+
             mContainer.post(new SwapViews());
         }
 
@@ -287,7 +299,19 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
             mSplash.setVisibility(View.GONE);
             getGameView().setVisibility(View.VISIBLE);
             getGameView().requestFocus();
+//                  dialoge();
 
+
+
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    mSplash.setVisibility(View.GONE);
+//                    getGameView().setVisibility(View.VISIBLE);
+//                    getGameView().requestFocus();
+//
+//                }
+//            }, 9000);
             rotation = new Rotate3dAnimation(0, 360 * GAME_SCREEN_ROTATION_COUNT, centerX, centerY, 310.0f, false);
 
             rotation.setDuration(GAME_SCREEN_ROTATION_DURATION);
@@ -296,6 +320,12 @@ public abstract class AbstractMainActivity extends Activity implements OnClickLi
 
             mContainer.startAnimation(rotation);
             mStarted = true;
+            if(getGameView().getVisibility()==View.VISIBLE){
+                dialoge();
+
+            }
+
+
         }
     }
 
